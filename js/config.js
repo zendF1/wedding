@@ -10,7 +10,7 @@ const WEDDING_CONFIG = {
     // 1. THÔNG TIN CHÚ RỂ (GROOM)
     groom: {
         name: "Nguyễn Văn Chường",                     // Họ và tên đầy đủ chú rể
-        shortName: "Chú Rể",                     // Tên gọi ngắn gọn / Tên thân mật
+        shortName: "Văn Chường",                 // Tên gọi ngắn gọn / Tên thân mật
         title: "Chú Rể",
         father: "Ông: Nguyễn Văn Khuôn",             // Tên bố chú rể
         mother: "Bà: Đặng Thị Loan",                 // Tên mẹ chú rể
@@ -30,7 +30,7 @@ const WEDDING_CONFIG = {
     // 2. THÔNG TIN CÔ DÂU (BRIDE)
     bride: {
         name: "Đỗ Thị Thu Thảo",                     // Họ và tên đầy đủ cô dâu
-        shortName: "Cô Dâu",                     // Tên gọi ngắn gọn / Tên thân mật
+        shortName: "Thu Thảo",                   // Tên gọi ngắn gọn / Tên thân mật
         title: "Cô Dâu",
         father: "Ông: Đỗ Ngọc Trừu",              // Tên bố cô dâu
         mother: "Bà: Phạm Thị Chinh",               // Tên mẹ cô dâu
@@ -47,17 +47,32 @@ const WEDDING_CONFIG = {
         }
     },
 
-    // 3. THỜI GIAN & ĐỊA ĐIỂM TỔ CHỨC
+    // 3. THỜI GIAN & ĐỊA ĐIỂM TỔ CHỨC (HỖ TRỢ 2 ĐỊA ĐIỂM CƯỚI TẠI TƯ GIA)
     event: {
-        // Định dạng thời gian đếm ngược: YYYY-MM-DDTHH:mm:ss
+        // Mốc thời gian chính cho bộ đếm ngược: YYYY-MM-DDTHH:mm:ss
         weddingDate: "2027-02-21T09:00:00",
-        solarDateDisplay: "Chủ nhật, ngày 21 tháng 02 năm 2027",
-        lunarDateDisplay: "(Tức ngày 16 tháng 01 năm 2027 âm lịch)",
-        timeDisplay: "18:00",
-        venueName: "TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI WHITE PALACE",
-        venueHall: "Sảnh Crystal Palace - Tầng 2",
-        venueAddress: "194 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh",
-        googleMapsLink: "https://maps.google.com/?q=White+Palace+Hoang+Van+Thu+Ho+Chi+Minh"
+
+        // ĐỊA ĐIỂM 1: TIỆC CƯỚI TẠI NHÀ GÁI (LỄ VU QUY)
+        brideEvent: {
+            tag: "LỄ VU QUY (TIỆC NHÀ GÁI)",
+            timeDisplay: "11:00",
+            solarDateDisplay: "Thứ Bảy, ngày 20 tháng 02 năm 2027",
+            lunarDateDisplay: "(Tức ngày 15 tháng 01 năm 2027 âm lịch)",
+            venueName: "TƯ GIA NHÀ GÁI",
+            venueAddress: "Xã Thái Ninh, Hưng Yên",
+            googleMapsLink: "https://maps.google.com/?q=Thái+Ninh+Hưng+Yên"
+        },
+
+        // ĐỊA ĐIỂM 2: TIỆC CƯỚI TẠI NHÀ TRAI (LỄ THÀNH HÔN)
+        groomEvent: {
+            tag: "LỄ THÀNH HÔN (TIỆC NHÀ TRAI)",
+            timeDisplay: "09:00",
+            solarDateDisplay: "Chủ nhật, ngày 21 tháng 02 năm 2027",
+            lunarDateDisplay: "(Tức ngày 16 tháng 01 năm 2027 âm lịch)",
+            venueName: "TƯ GIA NHÀ TRAI",
+            venueAddress: "Xã Tây Thái Ninh, Hưng Yên",
+            googleMapsLink: "https://maps.google.com/?q=Tây+Thái+Ninh+Hưng+Yên"
+        }
     },
 
     // 4. NHẠC NỀN ĐÁM CƯỚI
@@ -69,7 +84,7 @@ const WEDDING_CONFIG = {
     // 5. MÀN HÌNH CHÀO MỞ MÀN (PHOTOBOOTH 3 ẢNH)
     photobooth: {
         headline: "WE ARE GETTING MARRIED!",
-        dateText: "28 . 11 . 2026",
+        dateText: "21 . 02 . 2027",
         photos: [
             {
                 src: "assets/images/photobooth-1.jpg",

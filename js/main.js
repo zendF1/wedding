@@ -115,36 +115,42 @@ function renderConfigData() {
     if (brideBio) brideBio.textContent = cfg.bride.bio;
     setImg('bride-avatar', cfg.bride.avatar, cfg.bride.avatarFallback);
 
-    // Thời gian & Địa điểm tiệc
-    const eventTime = document.getElementById('event-time');
-    if (eventTime) eventTime.textContent = cfg.event.timeDisplay;
+    // Thời gian & Địa điểm tiệc Nhà Gái
+    if (cfg.event.brideEvent) {
+        const b = cfg.event.brideEvent;
+        const bTag = document.getElementById('bride-event-tag');
+        if (bTag && b.tag) bTag.textContent = b.tag;
+        const bTime = document.getElementById('bride-event-time');
+        if (bTime) bTime.textContent = b.timeDisplay;
+        const bSolar = document.getElementById('bride-solar-date');
+        if (bSolar) bSolar.textContent = b.solarDateDisplay;
+        const bLunar = document.getElementById('bride-lunar-date');
+        if (bLunar) bLunar.textContent = b.lunarDateDisplay;
+        const bName = document.getElementById('bride-venue-name');
+        if (bName) bName.textContent = b.venueName;
+        const bAddr = document.getElementById('bride-venue-address');
+        if (bAddr) bAddr.textContent = b.venueAddress;
+        const bMap = document.getElementById('btn-bride-maps');
+        if (bMap) bMap.href = b.googleMapsLink;
+    }
 
-    const solarDate = document.getElementById('event-solar-date');
-    if (solarDate) solarDate.textContent = cfg.event.solarDateDisplay;
-
-    const lunarDate = document.getElementById('event-lunar-date');
-    if (lunarDate) lunarDate.textContent = cfg.event.lunarDateDisplay;
-
-    const venueName = document.getElementById('venue-name');
-    if (venueName) venueName.textContent = cfg.event.venueName;
-
-    const venueHall = document.getElementById('venue-hall');
-    if (venueHall) venueHall.textContent = cfg.event.venueHall;
-
-    const venueAddress = document.getElementById('venue-address');
-    if (venueAddress) venueAddress.textContent = cfg.event.venueAddress;
-
-    const mapsBtn = document.getElementById('btn-google-maps');
-    if (mapsBtn) mapsBtn.href = cfg.event.googleMapsLink;
-
-    // Link tạo sự kiện Google Calendar tự động
-    const calBtn = document.getElementById('btn-add-calendar');
-    if (calBtn) {
-        const startDate = new Date(cfg.event.weddingDate);
-        const endDate = new Date(startDate.getTime() + 4 * 60 * 60 * 1000); // +4 tiếng
-        const formatDateForGoogle = (d) => d.toISOString().replace(/-|:|\.\d\d\d/g, "");
-        const calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`Tiệc Cưới: ${cfg.groom.shortName} & ${cfg.bride.shortName}`)}&dates=${formatDateForGoogle(startDate)}/${formatDateForGoogle(endDate)}&details=${encodeURIComponent(`Đến chung vui lễ thành hôn của ${cfg.groom.name} & ${cfg.bride.name}`)}&location=${encodeURIComponent(cfg.event.venueAddress)}`;
-        calBtn.href = calUrl;
+    // Thời gian & Địa điểm tiệc Nhà Trai
+    if (cfg.event.groomEvent) {
+        const g = cfg.event.groomEvent;
+        const gTag = document.getElementById('groom-event-tag');
+        if (gTag && g.tag) gTag.textContent = g.tag;
+        const gTime = document.getElementById('groom-event-time');
+        if (gTime) gTime.textContent = g.timeDisplay;
+        const gSolar = document.getElementById('groom-solar-date');
+        if (gSolar) gSolar.textContent = g.solarDateDisplay;
+        const gLunar = document.getElementById('groom-lunar-date');
+        if (gLunar) gLunar.textContent = g.lunarDateDisplay;
+        const gName = document.getElementById('groom-venue-name');
+        if (gName) gName.textContent = g.venueName;
+        const gAddr = document.getElementById('groom-venue-address');
+        if (gAddr) gAddr.textContent = g.venueAddress;
+        const gMap = document.getElementById('btn-groom-maps');
+        if (gMap) gMap.href = g.googleMapsLink;
     }
 
     // Footer
