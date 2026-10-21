@@ -9,11 +9,11 @@
 const WEDDING_CONFIG = {
     // 1. THÔNG TIN CHÚ RỂ (GROOM)
     groom: {
-        name: "Tên Chú Rể",                     // Họ và tên đầy đủ chú rể
+        name: "Nguyễn Văn Chường",                     // Họ và tên đầy đủ chú rể
         shortName: "Chú Rể",                     // Tên gọi ngắn gọn / Tên thân mật
         title: "Chú Rể",
-        father: "Ông: Nguyễn Văn A",             // Tên bố chú rể
-        mother: "Bà: Lê Thị B",                 // Tên mẹ chú rể
+        father: "Ông: Nguyễn Văn Khuôn",             // Tên bố chú rể
+        mother: "Bà: Đặng Thị Loan",                 // Tên mẹ chú rể
         address: "Quận 1, TP. Hồ Chí Minh",     // Địa chỉ nhà trai
         avatar: "assets/images/groom.jpg",      // Đặt ảnh vào assets/images/groom.jpg
         avatarFallback: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80",
