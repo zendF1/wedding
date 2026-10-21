@@ -14,27 +14,27 @@ const WEDDING_CONFIG = {
         title: "Chú Rể",
         father: "Ông: Nguyễn Văn Khuôn",             // Tên bố chú rể
         mother: "Bà: Đặng Thị Loan",                 // Tên mẹ chú rể
-        address: "Quận 1, TP. Hồ Chí Minh",     // Địa chỉ nhà trai
+        address: "Xã Tây Thái Ninh, Hưng Yên",     // Địa chỉ nhà trai
         avatar: "assets/images/groom.jpg",      // Đặt ảnh vào assets/images/groom.jpg
         avatarFallback: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80",
         bio: "Cảm ơn em đã bước vào cuộc đời anh, cùng anh trải qua những tháng năm thanh xuân và viết tiếp hành trình hạnh phúc phía trước.",
         bank: {
-            bankName: "Ngân Hàng MB Bank",
-            bankId: "MB",                       // Mã ngân hàng theo VietQR (MB, VCB, TCB, ACB, ...)
-            accountNumber: "0123456789",         // Số tài khoản chú rể
-            accountName: "NGUYEN VAN A",        // Tên chủ tài khoản (viết hoa không dấu)
+            bankName: "Ngân Hàng BIDV",
+            bankId: "BIDV",                       // Mã ngân hàng theo VietQR (MB, VCB, TCB, ACB, ...)
+            accountNumber: "2223636492",         // Số tài khoản chú rể
+            accountName: "NGUYEN VAN CHUONG",        // Tên chủ tài khoản (viết hoa không dấu)
             qrImage: "assets/images/qr-groom.jpg" // Đặt ảnh mã QR vào assets/images/qr-groom.jpg (hoặc để trống để tự tạo VietQR)
         }
     },
 
     // 2. THÔNG TIN CÔ DÂU (BRIDE)
     bride: {
-        name: "Tên Cô Dâu",                     // Họ và tên đầy đủ cô dâu
+        name: "Đỗ Thị Thu Thảo",                     // Họ và tên đầy đủ cô dâu
         shortName: "Cô Dâu",                     // Tên gọi ngắn gọn / Tên thân mật
         title: "Cô Dâu",
-        father: "Ông: Trần Văn C",              // Tên bố cô dâu
-        mother: "Bà: Phạm Thị D",               // Tên mẹ cô dâu
-        address: "Quận 3, TP. Hồ Chí Minh",     // Địa chỉ nhà gái
+        father: "Ông: Đỗ Ngọc Trừu",              // Tên bố cô dâu
+        mother: "Bà: Phạm Thị Chinh",               // Tên mẹ cô dâu
+        address: "Xã Thái Ninh, Hưng Yên",     // Địa chỉ nhà gái
         avatar: "assets/images/bride.jpg",      // Đặt ảnh vào assets/images/bride.jpg
         avatarFallback: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
         bio: "Từ hôm nay, chúng ta không chỉ là người yêu mà là người bạn đồng hành, là gia đình trọn đời của nhau. Em yêu anh!",
@@ -42,7 +42,7 @@ const WEDDING_CONFIG = {
             bankName: "Ngân Hàng Techcombank",
             bankId: "TCB",                      // Mã ngân hàng theo VietQR
             accountNumber: "9876543210",         // Số tài khoản cô dâu
-            accountName: "TRAN THI B",          // Tên chủ tài khoản (viết hoa không dấu)
+            accountName: "DO THI THU THAO",          // Tên chủ tài khoản (viết hoa không dấu)
             qrImage: "assets/images/qr-bride.jpg" // Đặt ảnh mã QR vào assets/images/qr-bride.jpg (hoặc để trống để tự tạo VietQR)
         }
     },
@@ -50,9 +50,9 @@ const WEDDING_CONFIG = {
     // 3. THỜI GIAN & ĐỊA ĐIỂM TỔ CHỨC
     event: {
         // Định dạng thời gian đếm ngược: YYYY-MM-DDTHH:mm:ss
-        weddingDate: "2026-11-28T18:00:00",
-        solarDateDisplay: "Thứ Bảy, ngày 28 tháng 11 năm 2026",
-        lunarDateDisplay: "(Tức ngày 20 tháng 10 năm Bính Ngọ)",
+        weddingDate: "2027-02-21T09:00:00",
+        solarDateDisplay: "Chủ nhật, ngày 21 tháng 02 năm 2027",
+        lunarDateDisplay: "(Tức ngày 16 tháng 01 năm 2027 âm lịch)",
         timeDisplay: "18:00",
         venueName: "TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI WHITE PALACE",
         venueHall: "Sảnh Crystal Palace - Tầng 2",
