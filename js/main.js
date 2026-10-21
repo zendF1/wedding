@@ -185,6 +185,9 @@ function initPhotoboothOpening() {
     if (!openingScreen || !openBtn) return;
 
     openBtn.addEventListener('click', () => {
+        // Reset cuộn trang lên trên cùng để trên Desktop hiển thị hoàn hảo Above the Fold
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
         // Ẩn màn hình mở màn & kích hoạt hiển thị giao diện chính
         openingScreen.classList.add('is-hidden');
         document.body.classList.add('invitation-opened');
@@ -264,25 +267,46 @@ function initPetalsEffect() {
  */
 function initEnvelope() {
     const envelope = document.getElementById('envelope-box');
+    const hint = document.getElementById('envelope-hint');
     if (!envelope) return;
+
+    // Điều chỉnh gợi ý tương tác phù hợp với thiết bị di động hay máy tính
+    const isMobile = window.innerWidth < 992;
+    if (hint) {
+        const hintText = hint.querySelector('.hint-text');
+        if (hintText && isMobile) {
+            hintText.textContent = "Chạm vào phong bì để mở thiệp mời";
+        }
+    }
 
     envelope.addEventListener('click', () => {
         envelope.classList.toggle('is-open');
+        const hintText = hint ? hint.querySelector('.hint-text') : null;
         if (envelope.classList.contains('is-open')) {
             createHeartBurst(envelope);
             showToast("Đã mở thiệp cưới! ❤️");
+            if (hintText) {
+                hintText.textContent = (window.innerWidth < 992) ? "Chạm để đóng phong bì" : "Click để đóng phong bì";
+            }
+        } else {
+            if (hintText) {
+                hintText.textContent = (window.innerWidth < 992) ? "Chạm vào phong bì để mở thiệp mời" : "Click vào phong bì để mở thiệp mời";
+            }
         }
     });
 }
 
 function createHeartBurst(container) {
+    if (!container) return;
+    const isStatBtn = container.id === 'btn-ig-wish-stat';
+    const heartIcons = ['❤️', '💖', '✨', '💕', '🥰', '💐'];
     for (let i = 0; i < 6; i++) {
         const heart = document.createElement('div');
         heart.className = 'floating-heart';
-        heart.innerHTML = '❤️';
-        heart.style.left = `${40 + Math.random() * 20}%`;
-        heart.style.top = `60%`;
-        heart.style.animationDelay = `${i * 0.15}s`;
+        heart.innerHTML = heartIcons[i % heartIcons.length];
+        heart.style.left = `${25 + Math.random() * 50}%`;
+        heart.style.top = isStatBtn ? '10%' : '55%';
+        heart.style.animationDelay = `${i * 0.12}s`;
         container.appendChild(heart);
         setTimeout(() => heart.remove(), 2600);
     }
@@ -664,6 +688,22 @@ function initInstagramDesktopPanels() {
         });
     }
 
+    // Nút tương tác số Chúc phúc (999k Chúc phúc) -> thả tim & nhảy số
+    const wishStatBtn = document.getElementById('btn-ig-wish-stat');
+    let wishCounter = 999;
+    if (wishStatBtn) {
+        const wishNumEl = wishStatBtn.querySelector('.ig-stat-num');
+        wishStatBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            wishCounter += 1;
+            if (wishNumEl) {
+                wishNumEl.textContent = `${wishCounter}k`;
+            }
+            createHeartBurst(wishStatBtn);
+            showToast("Cảm ơn bạn đã gửi lời chúc phúc ngọt ngào! ❤️✨");
+        });
+    }
+
     // Story highlights click xem ảnh
     const hlItems = document.querySelectorAll('.ig-highlight-item');
     const modal = document.getElementById('lightbox-modal');
@@ -788,11 +828,11 @@ function renderInstagramGuestList(filter = 'all') {
     // Gộp danh sách: người dùng mới thêm sẽ lên đầu
     const fullList = [...userGuests, ...baseList];
 
-    // Tính toán số lượng Online / Offline
+    // Tính toán số lượng Tham gia (Online) / Báo bận (Offline)
     const totalOnline = fullList.filter(g => g.status === 'online').length;
     const totalOffline = fullList.filter(g => g.status === 'offline').length;
     if (counterEl) {
-        counterEl.textContent = `${totalOnline} Online • ${totalOffline} Bận`;
+        counterEl.textContent = `${totalOnline} Tham gia • ${totalOffline} Báo bận`;
     }
 
     // Lọc theo tab
@@ -817,10 +857,10 @@ function renderInstagramGuestList(filter = 'all') {
             `<div class="ig-guest-avatar">${initial}</div>`;
 
         return `
-            <div class="ig-guest-item">
+            <div class="ig-guest-item" title="Bấm để xem đầy đủ lời chúc">
                 <div class="ig-guest-avatar-wrap">
                     ${avatarHTML}
-                    <span class="status-dot ${isOnline ? 'online' : 'offline'}" title="${isOnline ? 'Đang online (Tham gia)' : 'Offline (Bận)'}"></span>
+                    <span class="status-dot ${isOnline ? 'online' : 'offline'}" title="${isOnline ? 'Đang online (Tham gia)' : 'Offline (Bận việc)'}"></span>
                 </div>
                 <div class="ig-guest-content">
                     <div class="ig-guest-header">
@@ -835,4 +875,12 @@ function renderInstagramGuestList(filter = 'all') {
             </div>
         `;
     }).join('');
+
+    // Thêm tương tác click để mở rộng / thu gọn trọn vẹn lời chúc
+    const guestItems = feed.querySelectorAll('.ig-guest-item');
+    guestItems.forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('is-expanded');
+        });
+    });
 }

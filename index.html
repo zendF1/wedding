@@ -13,8 +13,8 @@
     <meta name="theme-color" content="#812927">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/animations.css?v=20270221d">
-    <link rel="stylesheet" href="css/style.css?v=20270221d">
+    <link rel="stylesheet" href="css/animations.css?v=20270221e">
+    <link rel="stylesheet" href="css/style.css?v=20270221e">
 </head>
 <body>
 
@@ -119,9 +119,9 @@
                         <strong class="ig-stat-num">21.02</strong>
                         <span class="ig-stat-label">Ngày cưới</span>
                     </div>
-                    <div class="ig-stat-col">
-                        <strong class="ig-stat-num">999k</strong>
-                        <span class="ig-stat-label">Chúc phúc</span>
+                    <div class="ig-stat-col ig-stat-interactive" id="btn-ig-wish-stat" title="Bấm để thả tim chúc phúc ❤️">
+                        <strong class="ig-stat-num" id="ig-stat-wishes">999k</strong>
+                        <span class="ig-stat-label">Chúc phúc 💖</span>
                     </div>
                     <div class="ig-stat-col">
                         <strong class="ig-stat-num">1</strong>
@@ -222,11 +222,25 @@
                         <div class="envelope-pocket"></div>
                         <div class="wax-seal">❤️</div>
                         <div class="envelope-letter">
-                            <img id="envelope-letter-img" class="letter-img-preview" src="" alt="Thư mời cưới">
+                            <div class="letter-card-content">
+                                <div class="letter-badge">THIỆP MỜI THÀNH HÔN</div>
+                                <div class="letter-photo-frame">
+                                    <img id="envelope-letter-img" class="letter-img-preview" src="" alt="Thư mời cưới">
+                                </div>
+                                <div class="letter-text-box">
+                                    <div class="letter-couple-names">Văn Chường ♡ Thu Thảo</div>
+                                    <div class="letter-date-line">✦ Chủ nhật, 21 . 02 . 2027 ✦</div>
+                                    <div class="letter-location-line">Tư gia Nhà Gái &amp; Nhà Trai • Hưng Yên</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <p class="envelope-hint">✨ Chạm vào phong bì để mở / đóng thiệp ✨</p>
+                <p class="envelope-hint" id="envelope-hint">
+                    <span class="hint-sparkle">✨</span>
+                    <span class="hint-text">Click vào phong bì để mở thiệp mời</span>
+                    <span class="hint-sparkle">✨</span>
+                </p>
             </section>
 
             <!-- PHẦN 3: ĐỒNG HỒ ĐẾM NGƯỢC -->
@@ -483,7 +497,7 @@
                     </div>
                     <div class="ig-live-counter">
                         <span class="live-dot-pulse"></span>
-                        <span id="ig-online-counter">16 Online</span>
+                        <span id="ig-online-counter">5 Tham gia • 3 Báo bận</span>
                     </div>
                 </div>
 
@@ -516,7 +530,7 @@
     </div>
 
     <!-- CÁC SCRIPT (KÈM VERSION TRÁNH BROWSER CACHE) -->
-    <script src="js/config.js?v=20270221d"></script>
-    <script src="js/main.js?v=20270221d"></script>
+    <script src="js/config.js?v=20270221e"></script>
+    <script src="js/main.js?v=20270221e"></script>
 </body>
 </html>
