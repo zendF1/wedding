@@ -25,6 +25,7 @@ function initApp() {
     initGuestbook();
     initBankBoxes();
     initScrollReveal();
+    initInstagramDesktopPanels();
 }
 
 /**
@@ -450,6 +451,11 @@ function initRSVP() {
         list.push(newRSVP);
         localStorage.setItem('wedding_rsvp', JSON.stringify(list));
 
+        // Cập nhật lại danh sách khách mời Instagram (Online/Offline) ngay lập tức
+        if (typeof renderInstagramGuestList === 'function') {
+            renderInstagramGuestList('all');
+        }
+
         form.reset();
         showToast("Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp bạn tại bữa tiệc! 🎉");
     });
@@ -624,4 +630,209 @@ function escapeHtml(str) {
               .replace(/>/g, "&gt;")
               .replace(/"/g, "&quot;")
               .replace(/'/g, "&#039;");
+}
+
+/**
+ * 14. KHỞI TẠO BỘ 2 CỘT GIAO DIỆN INSTAGRAM (DESKTOP PANELS)
+ */
+function initInstagramDesktopPanels() {
+    const cfg = WEDDING_CONFIG;
+
+    // 1. Gán thông tin trang Profile Instagram bên trái
+    const igHandle = document.getElementById('ig-handle');
+    if (igHandle && cfg.groom.shortName && cfg.bride.shortName) {
+        const cleanName = (str) => str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "");
+        igHandle.textContent = `${cleanName(cfg.groom.shortName)}.${cleanName(cfg.bride.shortName)}`;
+    }
+
+    const igFullname = document.getElementById('ig-fullname');
+    if (igFullname) {
+        igFullname.textContent = `${cfg.groom.name} ♡ ${cfg.bride.name}`;
+    }
+
+    const igAvatar = document.getElementById('ig-avatar-img');
+    if (igAvatar && cfg.photobooth?.photos?.[0]?.src) {
+        igAvatar.src = cfg.photobooth.photos[0].src;
+    }
+
+    // Nút follow tương tác thả tim
+    const followBtn = document.getElementById('ig-follow-btn');
+    if (followBtn) {
+        followBtn.addEventListener('click', () => {
+            createHeartBurst(followBtn);
+            showToast("Đã gửi ngàn tim chúc phúc đến cặp đôi! ❤️");
+        });
+    }
+
+    // Story highlights click xem ảnh
+    const hlItems = document.querySelectorAll('.ig-highlight-item');
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    hlItems.forEach((item, idx) => {
+        item.addEventListener('click', () => {
+            if (cfg.photobooth?.photos?.[idx % cfg.photobooth.photos.length] && modal && modalImg) {
+                modalImg.src = cfg.photobooth.photos[idx % cfg.photobooth.photos.length].src;
+                modal.classList.add('is-active');
+            }
+        });
+    });
+
+    // Story avatar click
+    const storyRing = document.getElementById('ig-profile-story');
+    if (storyRing) {
+        storyRing.addEventListener('click', () => {
+            if (cfg.photobooth?.photos?.[0] && modal && modalImg) {
+                modalImg.src = cfg.photobooth.photos[0].src;
+                modal.classList.add('is-active');
+            }
+        });
+    }
+
+    // Đồng bộ Music Sticker với Audio Player
+    const musicPlayBtn = document.getElementById('ig-music-play-btn');
+    const musicSticker = document.getElementById('ig-music-sticker');
+    const globalAudio = document.getElementById('wedding-audio');
+    const globalMusicBtn = document.getElementById('music-toggle-btn');
+
+    if (musicPlayBtn && globalAudio) {
+        const updateMusicStickerUI = (isPlaying) => {
+            const icon = musicPlayBtn.querySelector('.play-state-icon');
+            if (icon) icon.textContent = isPlaying ? '❚❚' : '▶';
+            if (musicSticker) {
+                if (isPlaying) musicSticker.classList.add('is-playing');
+                else musicSticker.classList.remove('is-playing');
+            }
+        };
+
+        musicPlayBtn.addEventListener('click', () => {
+            if (globalAudio.paused) {
+                globalAudio.play().then(() => {
+                    updateMusicStickerUI(true);
+                    if (globalMusicBtn) globalMusicBtn.classList.add('is-playing');
+                }).catch(() => {});
+            } else {
+                globalAudio.pause();
+                updateMusicStickerUI(false);
+                if (globalMusicBtn) globalMusicBtn.classList.remove('is-playing');
+            }
+        });
+
+        globalAudio.addEventListener('play', () => updateMusicStickerUI(true));
+        globalAudio.addEventListener('pause', () => updateMusicStickerUI(false));
+    }
+
+    // 2. Render danh sách khách mời bên phải (Online / Offline)
+    renderInstagramGuestList('all');
+
+    // Filter tabs (Tất cả, Tham gia, Bận)
+    const tabBtns = document.querySelectorAll('.ig-tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            const filter = btn.dataset.filter || 'all';
+            renderInstagramGuestList(filter);
+        });
+    });
+
+    // Nút Quick RSVP cuộn nhanh xuống form
+    const quickRsvpBtn = document.getElementById('btn-quick-rsvp');
+    if (quickRsvpBtn) {
+        quickRsvpBtn.addEventListener('click', () => {
+            const rsvpSec = document.querySelector('.rsvp-section');
+            if (rsvpSec) {
+                rsvpSec.scrollIntoView({ behavior: 'smooth' });
+                const nameInput = rsvpSec.querySelector('[name="name"]');
+                if (nameInput) setTimeout(() => nameInput.focus(), 600);
+            }
+        });
+    }
+
+    // Nút xem QR Code
+    const qrPill = document.getElementById('btn-show-qr');
+    if (qrPill && modal && modalImg) {
+        qrPill.addEventListener('click', () => {
+            modalImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://zendf1.github.io/wedding/';
+            modal.classList.add('is-active');
+        });
+    }
+}
+
+/**
+ * 15. RENDER DANH SÁCH KHÁCH MỜI GIAO DIỆN INSTAGRAM
+ * status = "online" -> Sáng đèn xanh
+ * status = "offline" -> Tối đèn xám
+ */
+function renderInstagramGuestList(filter = 'all') {
+    const feed = document.getElementById('ig-guest-feed');
+    const counterEl = document.getElementById('ig-online-counter');
+    if (!feed) return;
+
+    // Lấy danh sách từ config và kết hợp các lượt RSVP đã submit trong localStorage
+    const baseList = WEDDING_CONFIG.guestList || [];
+    const localRSVP = JSON.parse(localStorage.getItem('wedding_rsvp') || '[]');
+
+    // Format các lượt RSVP từ người dùng vào danh sách
+    const userGuests = localRSVP.map(r => {
+        const isAttending = !r.guests?.includes("không thể đến");
+        return {
+            name: r.name,
+            avatar: "",
+            status: isAttending ? "online" : "offline",
+            note: r.note || (isAttending ? "Đã xác nhận tham gia hôn lễ ✨" : "Bận việc - Gửi lời chúc mừng từ xa 💌"),
+            time: "Vừa xong",
+            isUserAdded: true
+        };
+    });
+
+    // Gộp danh sách: người dùng mới thêm sẽ lên đầu
+    const fullList = [...userGuests, ...baseList];
+
+    // Tính toán số lượng Online / Offline
+    const totalOnline = fullList.filter(g => g.status === 'online').length;
+    const totalOffline = fullList.filter(g => g.status === 'offline').length;
+    if (counterEl) {
+        counterEl.textContent = `${totalOnline} Online • ${totalOffline} Bận`;
+    }
+
+    // Lọc theo tab
+    let displayList = fullList;
+    if (filter === 'online') {
+        displayList = fullList.filter(g => g.status === 'online');
+    } else if (filter === 'offline') {
+        displayList = fullList.filter(g => g.status === 'offline');
+    }
+
+    if (displayList.length === 0) {
+        feed.innerHTML = `<div style="text-align: center; color: #8e8e8e; font-size: 11px; padding: 20px;">Không có khách mời trong mục này</div>`;
+        return;
+    }
+
+    feed.innerHTML = displayList.map(guest => {
+        const isOnline = guest.status === 'online';
+        const initial = guest.name.trim().split(' ').pop().charAt(0).toUpperCase();
+
+        const avatarHTML = guest.avatar ?
+            `<img class="ig-guest-avatar" src="${guest.avatar}" alt="${guest.name}" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\\'ig-guest-avatar\\'>${initial}</div><span class=\\'status-dot ${isOnline ? 'online' : 'offline'}\\'></span>';">` :
+            `<div class="ig-guest-avatar">${initial}</div>`;
+
+        return `
+            <div class="ig-guest-item">
+                <div class="ig-guest-avatar-wrap">
+                    ${avatarHTML}
+                    <span class="status-dot ${isOnline ? 'online' : 'offline'}" title="${isOnline ? 'Đang online (Tham gia)' : 'Offline (Bận)'}"></span>
+                </div>
+                <div class="ig-guest-content">
+                    <div class="ig-guest-header">
+                        <span class="ig-guest-name">${escapeHtml(guest.name)}</span>
+                        <span class="ig-guest-time">${escapeHtml(guest.time || 'Vừa xong')}</span>
+                    </div>
+                    <div class="ig-guest-note">
+                        <span class="status-badge ${isOnline ? 'online' : 'offline'}">${isOnline ? 'Sẽ đến' : 'Bận'}</span>
+                        ${escapeHtml(guest.note || (isOnline ? 'Sẽ tham gia tiệc cưới' : 'Bận không tham gia'))}
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }

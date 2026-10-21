@@ -234,5 +234,67 @@ const WEDDING_CONFIG = {
             time: "3 giờ trước",
             content: "Chúc mừng ngày vui của hai bạn! Chúc cặp đôi vàng mãi mặn nồng và thành công trên mọi chặng đường chung đôi."
         }
+    ],
+
+    // 13. DANH SÁCH KHÁCH MỜI GIAO DIỆN INSTAGRAM (ONLINE / OFFLINE)
+    // status: "online" = Sáng đèn xanh (Tham gia)
+    // status: "offline" = Tối đèn xám (Bận không đến)
+    guestList: [
+        {
+            name: "Nguyễn Hoàng Nam",
+            avatar: "assets/images/photobooth-2.jpg",
+            status: "online",
+            note: "Chắc chắn đến chung vui cùng 2 bạn! 🥂",
+            time: "2 phút trước"
+        },
+        {
+            name: "Lê Thu Trang & Bạn",
+            avatar: "",
+            status: "online",
+            note: "Đã chuẩn bị váy đẹp rồi nha 💖",
+            time: "15 phút trước"
+        },
+        {
+            name: "Trần Quốc Bảo",
+            avatar: "",
+            status: "online",
+            note: "Sẵn sàng quẩy hết mình cùng chú rể! 🍾",
+            time: "1 giờ trước"
+        },
+        {
+            name: "Hội Bạn Cấp 3 (12A1)",
+            avatar: "",
+            status: "online",
+            note: "Team cấp 3 sẽ có mặt đông đủ nhé! ✨",
+            time: "2 giờ trước"
+        },
+        {
+            name: "Đặng Minh Tuấn & Vợ",
+            avatar: "",
+            status: "online",
+            note: "Hẹn gặp 2 bạn tại hôn lễ nha 🌸",
+            time: "3 giờ trước"
+        },
+        {
+            name: "Phạm Đức Anh",
+            avatar: "",
+            status: "offline",
+            note: "Bận công tác xa - Chúc 2 bạn trăm năm hạnh phúc! 💌",
+            time: "Hôm qua"
+        },
+        {
+            name: "Vũ Mai Phương",
+            avatar: "",
+            status: "offline",
+            note: "Tiếc quá mình vướng lịch thi, gửi quà mừng sau nhé! ❤️",
+            time: "Hôm qua"
+        },
+        {
+            name: "Hoàng Kim Ngân",
+            avatar: "",
+            status: "offline",
+            note: "Gửi ngàn lời chúc phúc từ phương xa đến 2 bạn! 🕊️",
+            time: "2 ngày trước"
+        }
     ]
 };

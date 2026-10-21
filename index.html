@@ -13,8 +13,8 @@
     <meta name="theme-color" content="#812927">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/animations.css?v=20270221b">
-    <link rel="stylesheet" href="css/style.css?v=20270221b">
+    <link rel="stylesheet" href="css/animations.css?v=20270221c">
+    <link rel="stylesheet" href="css/style.css?v=20270221c">
 </head>
 <body>
 
@@ -83,21 +83,114 @@
 
     <!-- 4. KHUNG GIAO DIỆN CHÍNH (DESKTOP WRAPPER + MOBILE VIEW) -->
     <div class="desktop-wrapper">
-        <!-- Cột trang trí & thông tin bên trái (Hiển thị trên máy tính/màn hình rộng) -->
+        <!-- Cột Instagram bên trái: Profile Cô Dâu Chú Rể & Story Highlights -->
         <aside class="desktop-side-panel desktop-left-panel">
-            <div class="desktop-card-inner">
-                <div class="desktop-badge">WEDDING INVITATION</div>
-                <h2 class="desktop-couple-title" id="desktop-couple-names">Văn Chường &amp; Thu Thảo</h2>
-                <div class="desktop-couple-frame">
-                    <img src="assets/images/photobooth-1.jpg" alt="Văn Chường & Thu Thảo">
+            <div class="ig-card ig-profile-card">
+                <!-- Header Instagram -->
+                <div class="ig-header">
+                    <div class="ig-logo-wrap">
+                        <span class="ig-logo-text">Instagram</span>
+                        <span class="ig-verified-badge" title="Tài khoản chính thức">✓</span>
+                    </div>
+                    <div class="ig-header-action">
+                        <span class="ig-more-dots">•••</span>
+                    </div>
                 </div>
-                <p class="desktop-message">
-                    "Từ hai con người xa lạ, chúng mình đã tìm thấy nhau giữa biển người mênh mông và cùng nhau viết nên câu chuyện hạnh phúc trọn đời."
-                </p>
-                <div class="desktop-qr-box">
-                    <div class="desktop-qr-title">📱 Quét Mã Mở Trên Điện Thoại</div>
-                    <img id="desktop-qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https://zendf1.github.io/wedding/" alt="QR Code">
-                    <span class="desktop-qr-hint">Mở camera điện thoại quét để xem thiệp đẹp nhất</span>
+
+                <!-- Profile Info (Avatar có vòng Story chuyển sắc phong cách IG) -->
+                <div class="ig-profile-top">
+                    <div class="ig-story-ring" id="ig-profile-story" title="Xem ảnh cưới">
+                        <img id="ig-avatar-img" src="assets/images/photobooth-1.jpg" alt="Văn Chường & Thu Thảo">
+                        <span class="ig-story-live-badge">STORY</span>
+                    </div>
+                    <div class="ig-user-meta">
+                        <div class="ig-handle-row">
+                            <span class="ig-handle" id="ig-handle">vanchuong.thuthao</span>
+                        </div>
+                        <button class="ig-btn-follow" type="button" id="ig-follow-btn">
+                            <span class="heart-icon">❤️</span> Đã theo dõi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats: Posts, Followers, Forever -->
+                <div class="ig-stats-row">
+                    <div class="ig-stat-col">
+                        <strong class="ig-stat-num">21.02</strong>
+                        <span class="ig-stat-label">Ngày cưới</span>
+                    </div>
+                    <div class="ig-stat-col">
+                        <strong class="ig-stat-num">999k</strong>
+                        <span class="ig-stat-label">Chúc phúc</span>
+                    </div>
+                    <div class="ig-stat-col">
+                        <strong class="ig-stat-num">1</strong>
+                        <span class="ig-stat-label">Trọn đời</span>
+                    </div>
+                </div>
+
+                <!-- Bio -->
+                <div class="ig-bio-box">
+                    <div class="ig-fullname" id="ig-fullname">Nguyễn Văn Chường ♡ Đỗ Thị Thu Thảo</div>
+                    <p class="ig-bio-tagline">💍 Wedding Celebration • Save Our Date</p>
+                    <p class="ig-bio-location">📍 Tư gia Nhà Trai &amp; Nhà Gái • Hưng Yên</p>
+                    <p class="ig-bio-quote">"Hạnh phúc không phải là đích đến, mà là hành trình chúng mình cùng nhau bước qua mỗi ngày."</p>
+                </div>
+
+                <!-- Story Highlights (Tin nổi bật) -->
+                <div class="ig-highlights-section">
+                    <div class="ig-highlights-title">TIN NỔI BẬT</div>
+                    <div class="ig-highlights-scroll">
+                        <div class="ig-highlight-item" data-story="1">
+                            <div class="ig-hl-circle">
+                                <span>📸</span>
+                            </div>
+                            <span class="ig-hl-label">Hẹn hò</span>
+                        </div>
+                        <div class="ig-highlight-item" data-story="2">
+                            <div class="ig-hl-circle">
+                                <span>💍</span>
+                            </div>
+                            <span class="ig-hl-label">Cầu hôn</span>
+                        </div>
+                        <div class="ig-highlight-item" data-story="3">
+                            <div class="ig-hl-circle">
+                                <span>🌸</span>
+                            </div>
+                            <span class="ig-hl-label">Vu Quy</span>
+                        </div>
+                        <div class="ig-highlight-item" data-story="4">
+                            <div class="ig-hl-circle">
+                                <span>💒</span>
+                            </div>
+                            <span class="ig-hl-label">Thành Hôn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Sticker Player (Widget phát nhạc kiểu Story IG) -->
+                <div class="ig-music-sticker" id="ig-music-sticker">
+                    <div class="music-disc-wrap">
+                        <div class="music-disc-icon">🎵</div>
+                    </div>
+                    <div class="music-sticker-info">
+                        <div class="music-track-name" id="ig-track-name">Ánh Nắng Của Anh</div>
+                        <div class="music-artist-name">Nhạc Nền Đám Cưới</div>
+                        <div class="music-waves">
+                            <span class="wave-bar"></span>
+                            <span class="wave-bar"></span>
+                            <span class="wave-bar"></span>
+                            <span class="wave-bar"></span>
+                        </div>
+                    </div>
+                    <button class="music-play-btn" type="button" id="ig-music-play-btn" title="Bật/Tắt nhạc">
+                        <span class="play-state-icon">▶</span>
+                    </button>
+                </div>
+
+                <!-- Mini QR Share Pill -->
+                <div class="ig-share-pill" id="btn-show-qr">
+                    <span>📱 Quét mã xem thiệp trên điện thoại</span>
                 </div>
             </div>
         </aside>
@@ -379,37 +472,38 @@
 
         </main>
 
-        <!-- Cột trang trí & thông tin bên phải (Hiển thị trên máy tính/màn hình rộng) -->
+        <!-- Cột Instagram bên phải: Khách Mời Trực Tuyến (Online / Offline) -->
         <aside class="desktop-side-panel desktop-right-panel">
-            <div class="desktop-card-inner">
-                <div class="desktop-badge">SAVE OUR DATE</div>
-                <div class="desktop-date-banner">21 . 02 . 2027</div>
-                
-                <div class="desktop-wedding-summary">
-                    <div class="summary-item">
-                        <span class="summary-icon">🌸</span>
-                        <div>
-                            <strong>Lễ Vu Quy (Nhà Gái)</strong>
-                            <p>11:00 • 20.02.2027 (15/01 Âm lịch)</p>
-                            <p class="summary-sub">Xã Thái Ninh, Hưng Yên</p>
-                        </div>
+            <div class="ig-card ig-direct-card">
+                <!-- Header Direct -->
+                <div class="ig-header">
+                    <div class="ig-logo-wrap">
+                        <span class="ig-direct-icon">💬</span>
+                        <span class="ig-direct-title">Khách Mời Trực Tuyến</span>
                     </div>
-                    <div class="summary-item">
-                        <span class="summary-icon">💒</span>
-                        <div>
-                            <strong>Lễ Thành Hôn (Nhà Trai)</strong>
-                            <p>09:00 • 21.02.2027 (16/01 Âm lịch)</p>
-                            <p class="summary-sub">Xã Tây Thái Ninh, Hưng Yên</p>
-                        </div>
+                    <div class="ig-live-counter">
+                        <span class="live-dot-pulse"></span>
+                        <span id="ig-online-counter">16 Online</span>
                     </div>
                 </div>
 
-                <div class="desktop-quote-box">
-                    <div class="quote-symbol">❦</div>
-                    <p class="quote-text">
-                        "Không cần một tình yêu quá ồn ào, chỉ mong một đời đủ dài để yêu thương, đủ bao dung để thấu hiểu và đủ chân thành để đi cùng nhau đến cuối con đường."
-                    </p>
-                    <div class="quote-author" id="desktop-quote-author">— Văn Chường &amp; Thu Thảo</div>
+                <!-- Filter Tabs: Tất cả, Tham gia (Online), Bận (Offline) -->
+                <div class="ig-filter-tabs">
+                    <button class="ig-tab-btn is-active" data-filter="all" type="button">Tất cả</button>
+                    <button class="ig-tab-btn" data-filter="online" type="button">🟢 Tham gia</button>
+                    <button class="ig-tab-btn" data-filter="offline" type="button">⚫ Bận việc</button>
+                </div>
+
+                <!-- Danh sách khách mời có đèn Online (Sáng) / Offline (Tối) -->
+                <div class="ig-guest-feed" id="ig-guest-feed">
+                    <!-- Được render tự động từ config.guestList và tương tác RSVP -->
+                </div>
+
+                <!-- Nút CTA Điểm Danh Nhanh -->
+                <div class="ig-rsvp-cta-box">
+                    <button class="ig-rsvp-cta-btn" type="button" id="btn-quick-rsvp">
+                        <span>✨</span> Bạn có tham gia không? Điểm danh ngay
+                    </button>
                 </div>
             </div>
         </aside>
@@ -422,7 +516,7 @@
     </div>
 
     <!-- CÁC SCRIPT (KÈM VERSION TRÁNH BROWSER CACHE) -->
-    <script src="js/config.js?v=20270221b"></script>
-    <script src="js/main.js?v=20270221b"></script>
+    <script src="js/config.js?v=20270221c"></script>
+    <script src="js/main.js?v=20270221c"></script>
 </body>
 </html>
