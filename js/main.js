@@ -55,6 +55,16 @@ function renderConfigData() {
     const pbNames = document.getElementById('pb-names');
     if (pbNames) pbNames.textContent = `${cfg.groom.shortName} & ${cfg.bride.shortName}`;
 
+    const pbSignature = document.getElementById('pb-couple-signature');
+    if (pbSignature) pbSignature.textContent = `${cfg.groom.shortName} & ${cfg.bride.shortName}`;
+
+    const waxMono = document.querySelector('.wax-monogram');
+    if (waxMono && cfg.groom.name && cfg.bride.name) {
+        const gFirst = cfg.groom.name.trim().split(' ').pop().charAt(0).toUpperCase() || 'C';
+        const bFirst = cfg.bride.name.trim().split(' ').pop().charAt(0).toUpperCase() || 'T';
+        waxMono.textContent = `${gFirst}♡${bFirst}`;
+    }
+
     const pbDate = document.getElementById('pb-date');
     if (pbDate) pbDate.textContent = cfg.photobooth.dateText;
 
