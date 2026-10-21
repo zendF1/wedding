@@ -163,9 +163,15 @@ function renderConfigData() {
         if (gMap) gMap.href = g.googleMapsLink;
     }
 
-    // Footer
+    // Footer & Desktop Panels
     const footerQuote = document.getElementById('footer-quote');
     if (footerQuote) footerQuote.textContent = `${cfg.groom.shortName} & ${cfg.bride.shortName}`;
+
+    const deskNames = document.getElementById('desktop-couple-names');
+    if (deskNames) deskNames.textContent = `${cfg.groom.shortName} & ${cfg.bride.shortName}`;
+
+    const deskQuote = document.getElementById('desktop-quote-author');
+    if (deskQuote) deskQuote.textContent = `— ${cfg.groom.shortName} & ${cfg.bride.shortName}`;
 }
 
 /**

@@ -1411,3 +1411,229 @@ body {
     display: flex;
     animation: toastSlideIn 0.3s forwards;
 }
+
+/* ========================================================
+   17. HOA VĂN & CHỮ DỌC 2 BÊN KHUNG PHOTOBOOTH (MOBILE)
+   ======================================================== */
+.photobooth-side-decor {
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.photobooth-side-decor.decor-left {
+    left: 8px;
+}
+
+.photobooth-side-decor.decor-right {
+    right: 8px;
+}
+
+.side-botanical-ornament {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    opacity: 0.85;
+}
+
+.side-vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: var(--font-serif);
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent-gold-light);
+    opacity: 0.7;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.decor-right .side-vertical-text {
+    transform: rotate(0deg);
+}
+
+/* ========================================================
+   18. CỘT TRANG TRÍ 2 BÊN CHO MÀN HÌNH MÁY TÍNH (DESKTOP)
+   ======================================================== */
+.desktop-side-panel {
+    display: none; /* Ẩn trên mobile */
+}
+
+@media (min-width: 992px) {
+    .desktop-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        padding: 40px 20px;
+        background: radial-gradient(circle at 50% 20%, #4a1309 0%, #2b0803 50%, #150301 100%);
+    }
+
+    .desktop-side-panel {
+        display: block;
+        width: 290px;
+        position: sticky;
+        top: 40px;
+        flex-shrink: 0;
+        z-index: 10;
+    }
+
+    .desktop-card-inner {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border: 2px solid var(--accent-gold);
+        border-radius: 24px;
+        padding: 24px 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .desktop-badge {
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .desktop-couple-title {
+        font-family: var(--font-script);
+        font-size: 32px;
+        color: var(--primary-dark);
+        margin-bottom: 14px;
+        line-height: 1.2;
+    }
+
+    .desktop-couple-frame {
+        width: 100%;
+        height: 240px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-soft);
+        margin-bottom: 14px;
+    }
+
+    .desktop-couple-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 15%;
+    }
+
+    .desktop-message {
+        font-size: 12px;
+        color: var(--text-muted);
+        font-style: italic;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+
+    .desktop-qr-box {
+        background: #fdf8f5;
+        border: 1px dashed var(--accent-gold);
+        border-radius: 14px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .desktop-qr-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .desktop-qr-box img {
+        width: 120px;
+        height: 120px;
+        border-radius: 6px;
+    }
+
+    .desktop-qr-hint {
+        font-size: 10px;
+        color: #888888;
+        line-height: 1.3;
+    }
+
+    .desktop-date-banner {
+        font-family: var(--font-serif);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: var(--primary);
+        padding: 8px;
+        border-top: 1px dashed var(--accent-gold);
+        border-bottom: 1px dashed var(--accent-gold);
+        margin: 10px 0 16px;
+    }
+
+    .desktop-wedding-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        text-align: left;
+        margin-bottom: 18px;
+    }
+
+    .summary-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        background: #fdfaf8;
+        border: 1px solid #f0e6e2;
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+
+    .summary-icon {
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+
+    .summary-sub {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 2px;
+    }
+
+    .desktop-quote-box {
+        background: #faf4f0;
+        border-radius: 12px;
+        padding: 14px;
+        border-left: 3px solid var(--primary);
+        text-align: left;
+    }
+
+    .quote-symbol {
+        font-size: 14px;
+        color: var(--accent-gold);
+        margin-bottom: 4px;
+    }
+
+    .quote-text {
+        font-size: 11px;
+        color: var(--text-muted);
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    .quote-author {
+        font-family: var(--font-script);
+        font-size: 16px;
+        color: var(--primary);
+        margin-top: 6px;
+        text-align: right;
+    }
+}

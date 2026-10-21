@@ -26,6 +26,23 @@
         </div>
 
         <div class="photobooth-stage">
+            <!-- Họa tiết trang trí bên trái dải ảnh -->
+            <div class="photobooth-side-decor decor-left">
+                <div class="side-botanical-ornament">
+                    <svg viewBox="0 0 36 160" width="28" height="135" fill="none" stroke="#d4af37" stroke-width="1.2">
+                        <path d="M18 4 C18 35, 8 65, 18 95 C26 120, 18 145, 18 156" opacity="0.5"/>
+                        <path d="M18 20 C10 16, 4 23, 18 27" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 40 C26 36, 32 43, 18 47" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 60 C10 56, 4 63, 18 67" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 80 C26 76, 32 83, 18 87" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 100 C10 96, 4 103, 18 107" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 120 C26 116, 32 123, 18 127" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 140 C10 136, 4 143, 18 147" fill="#d4af37" opacity="0.35"/>
+                    </svg>
+                </div>
+                <div class="side-vertical-text">VĂN CHƯỜNG &amp; THU THẢO</div>
+            </div>
+
             <!-- Khe máy ảnh phong cách Hoàng gia mạ vàng -->
             <div class="photobooth-slot-bar">
                 <div class="photobooth-slit"></div>
@@ -70,6 +87,23 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Họa tiết trang trí bên phải dải ảnh -->
+            <div class="photobooth-side-decor decor-right">
+                <div class="side-botanical-ornament">
+                    <svg viewBox="0 0 36 160" width="28" height="135" fill="none" stroke="#d4af37" stroke-width="1.2">
+                        <path d="M18 4 C18 35, 26 65, 18 95 C10 120, 18 145, 18 156" opacity="0.5"/>
+                        <path d="M18 20 C26 16, 32 23, 18 27" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 40 C10 36, 4 43, 18 47" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 60 C26 56, 32 63, 18 67" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 80 C10 76, 4 83, 18 87" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 100 C26 96, 32 103, 18 107" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 120 C10 116, 4 123, 18 127" fill="#d4af37" opacity="0.35"/>
+                        <path d="M18 140 C26 136, 32 143, 18 147" fill="#d4af37" opacity="0.35"/>
+                    </svg>
+                </div>
+                <div class="side-vertical-text">SAVE THE DATE • 21.02.2027</div>
+            </div>
         </div>
 
         <button id="btn-open-invitation" class="photobooth-cta" type="button">
@@ -88,6 +122,25 @@
 
     <!-- 4. KHUNG GIAO DIỆN CHÍNH (DESKTOP WRAPPER + MOBILE VIEW) -->
     <div class="desktop-wrapper">
+        <!-- Cột trang trí & thông tin bên trái (Hiển thị trên máy tính/màn hình rộng) -->
+        <aside class="desktop-side-panel desktop-left-panel">
+            <div class="desktop-card-inner">
+                <div class="desktop-badge">WEDDING INVITATION</div>
+                <h2 class="desktop-couple-title" id="desktop-couple-names">Văn Chường &amp; Thu Thảo</h2>
+                <div class="desktop-couple-frame">
+                    <img src="assets/images/photobooth-1.jpg" alt="Văn Chường & Thu Thảo">
+                </div>
+                <p class="desktop-message">
+                    "Từ hai con người xa lạ, chúng mình đã tìm thấy nhau giữa biển người mênh mông và cùng nhau viết nên câu chuyện hạnh phúc trọn đời."
+                </p>
+                <div class="desktop-qr-box">
+                    <div class="desktop-qr-title">📱 Quét Mã Mở Trên Điện Thoại</div>
+                    <img id="desktop-qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https://zendf1.github.io/wedding/" alt="QR Code">
+                    <span class="desktop-qr-hint">Mở camera điện thoại quét để xem thiệp đẹp nhất</span>
+                </div>
+            </div>
+        </aside>
+
         <main class="mobile-container">
 
             <!-- PHẦN 1: HERO & LỜI TỰA -->
@@ -364,6 +417,41 @@
             </footer>
 
         </main>
+
+        <!-- Cột trang trí & thông tin bên phải (Hiển thị trên máy tính/màn hình rộng) -->
+        <aside class="desktop-side-panel desktop-right-panel">
+            <div class="desktop-card-inner">
+                <div class="desktop-badge">SAVE OUR DATE</div>
+                <div class="desktop-date-banner">21 . 02 . 2027</div>
+                
+                <div class="desktop-wedding-summary">
+                    <div class="summary-item">
+                        <span class="summary-icon">🌸</span>
+                        <div>
+                            <strong>Lễ Vu Quy (Nhà Gái)</strong>
+                            <p>11:00 • 20.02.2027 (15/01 Âm lịch)</p>
+                            <p class="summary-sub">Xã Thái Ninh, Hưng Yên</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-icon">💒</span>
+                        <div>
+                            <strong>Lễ Thành Hôn (Nhà Trai)</strong>
+                            <p>09:00 • 21.02.2027 (16/01 Âm lịch)</p>
+                            <p class="summary-sub">Xã Tây Thái Ninh, Hưng Yên</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-quote-box">
+                    <div class="quote-symbol">❦</div>
+                    <p class="quote-text">
+                        "Không cần một tình yêu quá ồn ào, chỉ mong một đời đủ dài để yêu thương, đủ bao dung để thấu hiểu và đủ chân thành để đi cùng nhau đến cuối con đường."
+                    </p>
+                    <div class="quote-author" id="desktop-quote-author">— Văn Chường &amp; Thu Thảo</div>
+                </div>
+            </div>
+        </aside>
     </div>
 
     <!-- MODAL LIGHTBOX XEM ẢNH TOÀN MÀN HÌNH -->
