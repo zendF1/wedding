@@ -1,0 +1,147 @@
+/* ========================================================
+   WEDDING ANIMATIONS & KEYFRAMES
+   ======================================================== */
+
+/* 1. Mở dải ảnh Photobooth */
+@keyframes stripSlideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 2. Đĩa than quay nhạc */
+@keyframes spinDisc {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 3. Nút bấm nhấp nháy thu hút sự chú ý (Pulse) */
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(129, 41, 39, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(129, 41, 39, 0.7);
+    }
+}
+
+/* 4. Cánh hoa / Trái tim rơi */
+@keyframes petalFall {
+    0% {
+        top: -10%;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: translateX(80px) rotate(360deg);
+    }
+}
+
+/* 5. Hiệu ứng Mở nắp phong bì (3D Flap) */
+.envelope-box {
+    perspective: 1000px;
+}
+
+.envelope-flap {
+    transform-origin: top center;
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope-box.is-open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-letter {
+    transition: transform 0.9s 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope-box.is-open .envelope-letter {
+    transform: translateY(-140px);
+    z-index: 5;
+}
+
+.envelope-box.is-open .wax-seal {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s ease;
+}
+
+/* 6. Trái tim bay lên khi mở thiệp */
+@keyframes heartFloatUp {
+    0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(-60px) translateX(15px) scale(1);
+    }
+    100% {
+        transform: translateY(-140px) translateX(-15px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.floating-heart {
+    position: absolute;
+    color: #e63946;
+    animation: heartFloatUp 2.5s ease-out forwards;
+    pointer-events: none;
+    font-size: 20px;
+    z-index: 20;
+}
+
+/* 7. Hiệu ứng xuất hiện khi cuộn trang (Fade Up) */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 8. Toast Notification */
+@keyframes toastSlideIn {
+    0% {
+        transform: translate(-50%, 40px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastSlideOut {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, 40px);
+        opacity: 0;
+    }
+}
