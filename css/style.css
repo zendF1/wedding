@@ -78,118 +78,104 @@ body {
 .photobooth-opening {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    max-width: 480px;
     height: 100vh;
-    background: radial-gradient(circle at 50% 35%, #6a1a0e 0%, #431007 55%, #250602 100%);
+    height: 100dvh;
+    background: radial-gradient(circle at 50% 35%, #5c140a 0%, #360a05 55%, #180301 100%);
     color: #ffffff;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 24px 20px 36px;
+    justify-content: space-evenly;
+    padding: 12px 16px 20px;
+    box-sizing: border-box;
     transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.8s ease;
-    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .photobooth-opening.is-hidden {
-    transform: translate(-50%, -100%);
+    transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
 }
 
 .photobooth-header {
     text-align: center;
-    margin-top: 6px;
+    margin-top: 0;
+    flex-shrink: 0;
 }
 
 .photobooth-headline {
-    font-size: 11px;
-    letter-spacing: 5px;
+    font-size: 10px;
+    letter-spacing: 4.5px;
     text-transform: uppercase;
     color: var(--accent-gold-light);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     font-weight: 600;
 }
 
 .photobooth-names {
     font-family: var(--font-script);
-    font-size: 40px;
+    font-size: clamp(30px, 4.5vh, 38px);
     font-weight: normal;
     color: #ffffff;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
-/* Khung Stage & Khe nhả ảnh */
+/* Khung Stage trung tâm */
 .photobooth-stage {
     position: relative;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-}
-
-.photobooth-slot-bar {
-    width: 260px;
-    height: 16px;
-    background: linear-gradient(180deg, #180503 0%, #350b06 50%, #150301 100%);
-    border-radius: 8px;
-    border: 1px solid rgba(212, 175, 55, 0.45);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    max-width: 420px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
-    position: relative;
-    margin-bottom: -6px;
+    margin: 4px auto;
 }
 
-.photobooth-slit {
-    width: 242px;
-    height: 5px;
-    background: #080100;
-    border-radius: 3px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.95);
-}
-
-/* Dải phim Photobooth Vòm Cung Cổ Điển & Viền Vàng Kim (Pinterest 4-in-1 Fusion) */
+/* Dải phim Photobooth Vòm Cung Cổ Điển & Viền Vàng Kim (Pinterest 4-in-1 Fusion: Roman Arch Top) */
 .photobooth-strip-container.luxury-arch-strip {
     position: relative;
-    width: 250px;
+    width: 260px;
     background: #ffffff;
     padding: 6px;
-    border-radius: 46px 46px 12px 12px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(212, 175, 55, 0.25);
+    border-radius: 130px 130px 16px 16px; /* Vòm cung Roman Arch chuẩn tỷ lệ bán nguyệt (260px / 2 = 130px) */
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.75), 
+        0 10px 25px rgba(43, 10, 4, 0.5), 
+        0 0 35px rgba(212, 175, 55, 0.35); /* Đổ bóng 3D đa tầng siêu sâu */
     animation: stripSlideDown 1.3s cubic-bezier(0.16, 1, 0.3, 1);
     border: 2px solid #d4af37;
     z-index: 5;
+    flex-shrink: 0;
 }
 
 .strip-arch-inner {
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    border-radius: 40px 40px 8px 8px;
-    padding: 12px 10px 14px;
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    border-radius: 124px 124px 10px 10px; /* Vòm cung lòng trong đồng tâm hoàn hảo */
+    padding: 16px 8px 12px;
     background: linear-gradient(180deg, #fffdfb 0%, #faf6f0 100%);
+    box-shadow: inset 0 0 0 3px #ffffff, inset 0 0 0 4.5px rgba(212, 175, 55, 0.25);
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
 }
 
-/* Con dấu sáp đỏ rượu nạm vàng (Wax Seal Crest) */
+/* Con dấu sáp đỏ rượu nạm vàng (Wax Seal Crest) đặt trang trọng ngay tâm vòm */
 .strip-wax-seal-crest {
-    width: 44px;
-    height: 44px;
-    margin: -2px auto 2px;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 4px;
     background: radial-gradient(circle at 35% 35%, #a82a2a 0%, #781c1c 65%, #4a0d0d 100%);
     border: 2px solid #e0c078;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(74, 13, 13, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(74, 13, 13, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,11 +183,11 @@ body {
 
 .wax-monogram {
     font-family: var(--font-serif);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: #fcece9;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .strip-header-tag {
@@ -241,7 +227,7 @@ body {
 /* Khung ảnh cưới mạ viền vàng */
 .photobooth-frame.luxury-frame {
     width: 100%;
-    height: 138px;
+    height: clamp(100px, 14.5vh, 134px);
     background-color: #1a1615;
     border-radius: 4px;
     overflow: hidden;
@@ -276,14 +262,14 @@ body {
 
 .strip-footer-tag {
     text-align: center;
-    padding-top: 6px;
+    padding-top: 5px;
     border-top: 1px dashed rgba(212, 175, 55, 0.4);
     margin-top: 2px;
 }
 
 .strip-signature {
     font-family: var(--font-script);
-    font-size: 24px;
+    font-size: 22px;
     color: var(--primary);
     line-height: 1.1;
 }
@@ -310,7 +296,7 @@ body {
     background: linear-gradient(135deg, #d4af37 0%, #b89146 50%, #99732d 100%);
     color: #1c0602;
     border: 1px solid rgba(255, 255, 255, 0.35);
-    padding: 13px 36px;
+    padding: 12px 34px;
     border-radius: 30px;
     font-size: 13px;
     font-weight: 700;
@@ -322,6 +308,8 @@ body {
     align-items: center;
     gap: 8px;
     transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 4px;
+    flex-shrink: 0;
 }
 
 .photobooth-cta:hover {
