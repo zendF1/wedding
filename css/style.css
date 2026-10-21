@@ -1401,55 +1401,23 @@ body {
 }
 
 /* ========================================================
-   17. HOA VĂN & CHỮ DỌC 2 BÊN KHUNG PHOTOBOOTH (MOBILE)
-   ======================================================== */
-.photobooth-side-decor {
-    position: absolute;
-    top: 52%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    z-index: 4;
-    pointer-events: none;
-}
-
-.photobooth-side-decor.decor-left {
-    left: 8px;
-}
-
-.photobooth-side-decor.decor-right {
-    right: 8px;
-}
-
-.side-botanical-ornament {
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-    opacity: 0.85;
-}
-
-.side-vertical-text {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    font-family: var(--font-serif);
-    font-size: 9px;
-    letter-spacing: 4px;
-    color: var(--accent-gold-light);
-    opacity: 0.7;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-.decor-right .side-vertical-text {
-    transform: rotate(0deg);
-}
-
-/* ========================================================
    18. CỘT TRANG TRÍ 2 BÊN CHO MÀN HÌNH MÁY TÍNH (DESKTOP)
+   Chỉ hiển thị khi đã ấn "MỞ THIỆP MỜI" trên màn hình Desktop (>= 992px)
+   Trên Mobile: Bỏ qua hoàn toàn (display: none)
    ======================================================== */
 .desktop-side-panel {
-    display: none; /* Ẩn trên mobile */
+    display: none !important; /* Mặc định luôn ẩn trên mobile và bên ngoài */
+}
+
+@keyframes desktopPanelFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (min-width: 992px) {
@@ -1460,15 +1428,18 @@ body {
         gap: 30px;
         padding: 40px 20px;
         background: radial-gradient(circle at 50% 20%, #4a1309 0%, #2b0803 50%, #150301 100%);
+        min-height: 100vh;
     }
 
-    .desktop-side-panel {
-        display: block;
+    /* Khi mở thiệp mời trên Web Desktop, 2 cột 2 bên mới xuất hiện mượt mà */
+    body.invitation-opened .desktop-side-panel {
+        display: block !important;
         width: 290px;
         position: sticky;
         top: 40px;
         flex-shrink: 0;
         z-index: 10;
+        animation: desktopPanelFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .desktop-card-inner {

@@ -184,8 +184,9 @@ function initPhotoboothOpening() {
     if (!openingScreen || !openBtn) return;
 
     openBtn.addEventListener('click', () => {
-        // Ẩn màn hình mở màn
+        // Ẩn màn hình mở màn & kích hoạt hiển thị giao diện chính
         openingScreen.classList.add('is-hidden');
+        document.body.classList.add('invitation-opened');
 
         // Bật nhạc tự động khi có tương tác của người dùng
         const audio = document.getElementById('wedding-audio');
