@@ -1425,21 +1425,89 @@ body {
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        gap: 30px;
-        padding: 40px 20px;
+        gap: clamp(40px, 4vw, 75px); /* Tách hẳn 2 bên ra rộng rãi */
+        padding: 36px clamp(24px, 3.5vw, 60px);
         background: radial-gradient(circle at 50% 20%, #4a1309 0%, #2b0803 50%, #150301 100%);
         min-height: 100vh;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* Khi mở thiệp mời trên Web Desktop, 2 cột 2 bên mới xuất hiện mượt mà */
+    /* MỞ RỘNG NỘI DUNG Ở GIỮA TO RÕ RỆT, ĐỠ THÔ VÀ ĐẦY ĐẶN */
+    .mobile-container {
+        width: 100%;
+        max-width: clamp(600px, 44vw, 720px); /* Tăng mạnh từ 480px lên đến 720px */
+        border-radius: 28px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+        overflow: hidden;
+    }
+
+    /* Hai bên tách rộng ra và mở rộng kích thước thẻ */
     body.invitation-opened .desktop-side-panel {
         display: block !important;
-        width: 310px;
+        width: clamp(315px, 22vw, 360px);
         position: sticky;
-        top: 30px;
+        top: 24px;
         flex-shrink: 0;
         z-index: 10;
         animation: desktopPanelFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Tăng kích thước ảnh bìa & ảnh chính tương xứng với khung to */
+    .hero-banner-frame {
+        height: clamp(440px, 48vh, 540px);
+    }
+
+    .hero-groom-name, .hero-bride-name {
+        font-size: 44px;
+    }
+
+    .invitation-title {
+        font-size: 30px;
+    }
+
+    /* Chân dung cô dâu chú rể nằm ngang 2 cột song song */
+    .couple-intro-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .couple-profile-card {
+        margin-bottom: 0;
+    }
+
+    /* Hộp mừng cưới tài khoản ngân hàng nằm ngang 2 cột */
+    .bank-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    /* Phong bì tương tác to hơn trên desktop */
+    .envelope-wrapper {
+        width: 360px;
+        height: 245px;
+    }
+
+    .envelope-pocket {
+        border-left-width: 180px;
+        border-right-width: 180px;
+        border-bottom-width: 125px;
+        border-top-width: 120px;
+    }
+
+    .envelope-flap {
+        border-left-width: 180px;
+        border-right-width: 180px;
+        border-top-width: 135px;
+        border-bottom-width: 110px;
+    }
+
+    /* Nút nhạc nổi chuyển sang góc trên phải thanh lịch */
+    .music-toggle-btn {
+        right: 28px;
+        top: 24px;
     }
 
     /* ========================================================
